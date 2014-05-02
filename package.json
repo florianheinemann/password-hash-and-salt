@@ -1,0 +1,15 @@
+{
+  "name": "password-hash-and-salt",
+  "version": "0.0.1",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "grunt": "~0.4.4",
+    "mocha": "~1.18.2",
+    "chai": "~1.9.1",
+    "grunt-mocha-test": "~0.10.2"
+  }
+}
