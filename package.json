@@ -1,6 +1,6 @@
 {
   "name": "password-hash-and-salt",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "scripts": {
     "test": "grunt test"
   },

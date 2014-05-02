@@ -16,16 +16,15 @@ var password = require('password-hash-and-salt');
 var myuser = [];
 
 // Creating hash and salt
-password('mysecret').hash(function(error, hash, salt) {
+password('mysecret').hash(function(error, hash) {
 	if(error)
 		throw new Error('Something went wrong!');
 
-	// Store hash and salt
+	// Store hash (incl. algorithm, iterations, and salt)
 	myuser.hash = hash;
-	myuser.salt = salt; // Salt can be stored as it is along with the user
 
 	// Verifying a hash
-	password('hack').verifyAgainst(myuser.hash, myuser.salt, function(error, verified) {
+	password('hack').verifyAgainst(myuser.hash, function(error, verified) {
 		if(error)
 			throw new Error('Something went wrong!');
 		if(!verified) {
@@ -40,6 +39,12 @@ password('mysecret').hash(function(error, hash, salt) {
 
 ### Crypto
 password-hash-and-salt uses node.js' internal crypto module. Hashes are generated with pbkdf2 using 10,000 iterations.
+
+### Created hash
+The created hash is of the following format:
+`pbkdf2$10000$hash$salt`
+
+This allows for future upgrades of the algorithm and/or increased number of iterations in future version. It also simplifies storage as no dedicated database field for the salt is required.
 
 ### License
 
