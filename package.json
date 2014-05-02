@@ -1,9 +1,24 @@
 {
   "name": "password-hash-and-salt",
-  "version": "0.1.1",
+  "version": "0.1.2",
+  "description": "Simple, safe and straight-forward password hashing / salting for node.js",
+  "main": "index.js",
   "scripts": {
     "test": "grunt test"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/florianheinemann/password-hash-and-salt.git"
+  },
+  "keywords": [
+    "crypto",
+    "node.js",
+    "node",
+    "hash",
+    "salt",
+    "password",
+    "pbkdf2"
+  ],
   "dependencies": {
   },
   "devDependencies": {
@@ -11,5 +26,11 @@
     "mocha": "~1.18.2",
     "chai": "~1.9.1",
     "grunt-mocha-test": "~0.10.2"
-  }
+  },
+  "author": "Florian Heinemann <florian.heinemann@gmail.com> (http://twitter.com/florian__h)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/florianheinemann/password-hash-and-salt/issues"
+  },
+  "homepage": "https://github.com/florianheinemann/password-hash-and-salt"
 }
