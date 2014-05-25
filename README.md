@@ -46,9 +46,7 @@ The created hash is of the following format:
 
 This allows for future upgrades of the algorithm and/or increased number of iterations in future version. It also simplifies storage as no dedicated database field for the salt is required.
 
-### License
+### Credits and License
+express-sslify is licensed under the MIT license. If you'd like to be informed about new projects follow   [@TheSumOfAll](http://twitter.com/TheSumOfAll/).
 
-[MIT License](http://opensource.org/licenses/MIT)
-
-### Author
-Florian Heinemann [http://twitter.com/florian__h/](http://twitter.com/florian__h/)
+Copyright (c) 2013-2014 Florian Heinemann
