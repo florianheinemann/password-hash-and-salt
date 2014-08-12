@@ -77,19 +77,6 @@ describe('Password hash and salt', function() {
 				})
 			});
 		});
-		
-		it('should return a key with specified number of iterations', function (done) {
-			password('secret', 12000).hash(function(error1, key1) {
-				expect(error1).to.not.exist;
-				expect(key1).to.exist;
-				var split = splitHash(key1);
-				expect(split.algorithm).to.equal('pbkdf2');
-				expect(split.iterations).to.equal('12000');
-				expect(split.hash.length).to.be.at.least(10);
-				expect(split.salt.length).to.be.at.least(10);
-				done();
-			});
-		});
 	});
 
 	describe('Hash verification', function() {
