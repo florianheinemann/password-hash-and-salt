@@ -55,6 +55,8 @@ This allows for future upgrades of the algorithm and/or increased number of iter
 
 If an application increases the number of iterations for encryption, verifyAgainst can automatically rehash a password on login with the new number of iterations by specifying reash (3rd argument) as true when creating password object.  The new hash will be the 3rd argument in the callback passed to verifyAgainst e.g.
 
+```javascript
+
 // Create hash with default iterations(10000), then automatically migrate to stronger version(12000)
 password('mysecret').hash(function(error, hash) {
 	if(error)
