@@ -51,6 +51,32 @@ The created hash is of the following format:
 
 This allows for future upgrades of the algorithm and/or increased number of iterations in future version. It also simplifies storage as no dedicated database field for the salt is required.
 
+### Automatic hash migration
+
+If an application increases the number of iterations for encryption, verifyAgainst can automatically rehash a password on login with the new number of iterations by specifying reash (3rd argument) as true when creating password object.  The new hash will be the 3rd argument in the callback passed to verifyAgainst e.g.
+
+// Create hash with default iterations(10000), then automatically migrate to stronger version(12000)
+password('mysecret').hash(function(error, hash) {
+	if(error)
+		throw new Error('Something went wrong!');
+
+	// Store hash (incl. algorithm, iterations, and salt)
+	myuser.hash = hash;
+
+	// Verifying a hash
+	password('mysecret', 12000, true).verifyAgainst(myuser.hash, function(error, verified, newHash) {
+		if(error)
+			throw new Error('Something went wrong!');
+		if(!verified) {
+			console.log("Don't try! We got you!");
+		} else {
+			console.log("The new hash is..." + newHash);
+		}
+	});
+})
+
+```
+
 ### Credits and License
 express-sslify is licensed under the MIT license. If you'd like to be informed about new projects follow   [@TheSumOfAll](http://twitter.com/TheSumOfAll/).
 
