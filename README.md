@@ -72,6 +72,7 @@ password('mysecret').hash(function(error, hash) {
 		if(!verified) {
 			console.log("Don't try! We got you!");
 		} else {
+			myuser.hash = newHash;
 			console.log("The new hash is..." + newHash);
 		}
 	});
