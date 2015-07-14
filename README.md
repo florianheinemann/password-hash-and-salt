@@ -9,7 +9,7 @@ First, install the module:
 
 `$ npm install password-hash-and-salt --save`
 
-Afterwards, usage is simple as shown in the following example:
+Afterwards, usage is as simple as shown in the following example:
 ```javascript
 var password = require('password-hash-and-salt');
 
