@@ -77,6 +77,19 @@ describe('Password hash and salt', function() {
 				})
 			});
 		});
+		
+		it('should return a key with specified number of iterations', function (done) {
+			password('secret', 12000).hash(function(error1, key1) {
+				expect(error1).to.not.exist;
+				expect(key1).to.exist;
+				var split = splitHash(key1);
+				expect(split.algorithm).to.equal('pbkdf2');
+				expect(split.iterations).to.equal('12000');
+				expect(split.hash.length).to.be.at.least(10);
+				expect(split.salt.length).to.be.at.least(10);
+				done();
+			});
+		});
 	});
 
 	describe('Hash verification', function() {
@@ -183,5 +196,22 @@ describe('Password hash and salt', function() {
 				});
 			});
 		});
+		
+		it('should verify and rehash if new hash iterations specified', function (done) {
+			console.log('THEN!!!');
+			password('secret').hash(function(error1, key1) {
+				expect(error1).to.not.exist;
+				expect(key1).to.exist;
+				password('secret', 12000, true).verifyAgainst(key1, function(error2, validated, key2) {
+					expect(error2).to.not.exist;
+					expect(validated).to.equal(true);
+					var split = splitHash(key2);
+					expect(split.algorithm).to.equal('pbkdf2');
+					expect(split.iterations).to.equal('12000');
+					done();
+				});
+			});
+		});
+
 	});
 });
