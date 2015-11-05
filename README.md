@@ -41,7 +41,7 @@ password('mysecret').hash(function(error, hash) {
 password-hash-and-salt uses node.js' internal crypto module. Hashes are generated with pbkdf2 using 10,000 iterations.
 
 ### Created hash
-The created hash is of the following format:
+The created hash is of 270 characters length and is of the following format:
 `pbkdf2$10000$hash$salt`
 
 This allows for future upgrades of the algorithm and/or increased number of iterations in future version. It also simplifies storage as no dedicated database field for the salt is required.
